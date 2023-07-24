@@ -21,6 +21,14 @@ pipeline{
             }
         }
 
+stage('Deploy') {
+    steps {
+sh '''
+oc project wcwvcs-greetings
+oc start-build greeting-service --follow --wait
+''' }
+}
+        
         // Add the "Deploy" stage here
     }
 }
